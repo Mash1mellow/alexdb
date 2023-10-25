@@ -7,20 +7,24 @@ app = Flask(__name__)
 def index():
 	homepage = "<h1>楊子青Python網頁</h1>"
 	homepage += "<a href=/mis>MIS</a><br>"
-	homepage += "<a href=/alex>顯示日期時間</a><br>"
-	homepage += "<a href=/account?nick=tcyang>傳送使用者暱稱</a><br>"
-	homepage += "<a href=/about>子青簡介網頁</a><br>"
-	return homepage
+	homepage += "<a href=/today>顯示日期時間</a><br>"
+	homepage += "<a href=/welcome?nick=tcyang>傳送使用者暱稱</a><br>"
+    homepage += "<a href=/about>子青簡介網頁</a><br>"
+    return homepage
 
 @app.route("/mis")
 def course():
 	return "<a href = https://drive.google.com/drive/folders/1JGHLQWpzT2QxSVPUwLxrIdYowijWy4h1><h1>資料庫管理</h1></a>"
 
-@app.route("/alex", methods=["GET", "POST"])
-def alex():
-	user = request.values.get("nick")
-	now = datetime.now()
-	return render_template ("Alex.html",datetime = str(now), name = user)
+@app.route("/today")
+def today():
+    now = datetime.now()
+    return render_template("today.html", datetime = str(now))
+
+@app.route("/welcome", methods=["GET", "POST"])
+def welcome():
+    user = request.values.get("nick")
+    return render_template("welcome.html", name=user)
 
 @app.route("/account", methods=["GET", "POST"])
 def account():
