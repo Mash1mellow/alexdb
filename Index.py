@@ -9,8 +9,8 @@ def index():
 	homepage += "<a href=/mis>MIS</a><br>"
 	homepage += "<a href=/today>顯示日期時間</a><br>"
 	homepage += "<a href=/welcome?nick=tcyang>傳送使用者暱稱</a><br>"
-    homepage += "<a href=/about>子青簡介網頁</a><br>"
-    return homepage
+	homepage += "<a href=/account>子青簡介網頁</a><br>"
+	return homepage
 
 @app.route("/mis")
 def course():
@@ -19,7 +19,7 @@ def course():
 @app.route("/today")
 def today():
     now = datetime.now()
-    return render_template("today.html", datetime = str(now))
+    return render_template("Today.html", datetime = str(now))
 
 @app.route("/welcome", methods=["GET", "POST"])
 def welcome():
