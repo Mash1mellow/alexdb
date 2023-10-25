@@ -5,11 +5,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-	X = "作著 : 黃植達 <br>"
-	X += "<a href = /mis>课程网页</a> <br>"
-	X += "<a href = /alex?nick=Alex>个人介绍</a> <br>"
-	X += "<a href = /account>表单传值</a><br>"
-	return X
+	homepage = "<h1>楊子青Python網頁</h1>"
+    homepage += "<a href=/mis>MIS</a><br>"
+    homepage += "<a href=/alex>顯示日期時間</a><br>"
+    homepage += "<a href=/account?nick=tcyang>傳送使用者暱稱</a><br>"
+    homepage += "<a href=/about>子青簡介網頁</a><br>"
+    return homepage
 
 @app.route("/mis")
 def course():
@@ -32,5 +33,5 @@ def account():
 		return render_template("Account.html")
 
 if __name__ == "__main__":
-	app.run()
-	#serve(app, host='0.0.0.0', port=8080)
+	#app.run()
+	serve(app, host='0.0.0.0', port=8080)
