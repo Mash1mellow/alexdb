@@ -37,5 +37,5 @@ def account():
 		return render_template("Account.html")
 
 if __name__ == "__main__":
-	#app.run()
-	serve(app, host='0.0.0.0', port=8080)
+	app.run()
+	#serve(app, host='0.0.0.0', port=8080)
